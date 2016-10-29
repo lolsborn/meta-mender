@@ -1,8 +1,9 @@
 inherit cross
 
-SRC_URI = "git@github.com:OpenZWave/open-zwave.git"
+SRC_URI = "git@github.com:OpenZWave/open-zwave.git;protocol=https;destsuffix=openzwave-${PV}/src/github.com/openzwave"
 
-SRCREV_pn-godep = "83919e36719967c83a4d2b5b9520a8a9b463f820"
+LICENSE = "lgpl"
+LIC_FILES_CHKSUM = "file://${S}/src/github.com/openzwave/license/license.txt;md5=584c7ddacb8739db77ddcc47bd9d3b52"
 
 do_compile() {
   make
