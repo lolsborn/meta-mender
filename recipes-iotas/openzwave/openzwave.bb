@@ -27,3 +27,4 @@ do_compile() {
   export pkgconfigdir="${PKG_CONFIG_DIR}"
   export instlibdir="${D}${prefix}${base_libdir}"
   make BITBAKE_ENV=1
+}
