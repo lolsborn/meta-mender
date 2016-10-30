@@ -1,14 +1,29 @@
-inherit cross
+inherit autotools
 
-SRC_URI = "git@github.com:OpenZWave/open-zwave.git;protocol=https;destsuffix=openzwave-${PV}/src/github.com/openzwave"
+SRC_URI = "git://github.com/OpenZWave/open-zwave.git"
+SRCREV = "master"
 
-LICENSE = "lgpl"
-LIC_FILES_CHKSUM = "file://${S}/src/github.com/openzwave/license/license.txt;md5=584c7ddacb8739db77ddcc47bd9d3b52"
+S = "${WORKDIR}/git"
+B = "${WORKDIR}/git"
 
-do_compile() {
-  make
-}
+LICENSE = "LGPLv3"
+LIC_FILES_CHKSUM = "file://license/license.txt;md5=584c7ddacb8739db77ddcc47bd9d3b52"
+
+DEPENDS += "systemd"
+
+FILES_${PN} += "/usr/etc/openzwave"
 
 do_install() {
-  install -d "${D}/${bindir}"
+  export PREFIX="${D}${prefix}"
+  export pkgconfigdir="${PKG_CONFIG_DIR}"
+  export instlibdir="${D}${prefix}${base_libdir}"
+  make BITBAKE_ENV=1 install
 }
+
+do_compile() {
+  bbnote "In compile"
+  bbnote "${B}"
+  export PREFIX="${D}${prefix}"
+  export pkgconfigdir="${PKG_CONFIG_DIR}"
+  export instlibdir="${D}${prefix}${base_libdir}"
+  make BITBAKE_ENV=1
