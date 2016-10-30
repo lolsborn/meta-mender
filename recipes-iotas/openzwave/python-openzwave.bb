@@ -6,6 +6,6 @@ SRCREV = "master"
 S = "${WORKDIR}/git"
 
 LICENSE = "LGPLv3"
-LIC_FILES_CHKSUM = "file://COPYRIGHT.txt;md5=584c7ddacb8739db77ddcc47bd9d3b52"
+LIC_FILES_CHKSUM = "file://COPYRIGHT.txt;md5=60b0221258e884b75863208e096fc155"
 
 DEPENDS += "openzwave python"
